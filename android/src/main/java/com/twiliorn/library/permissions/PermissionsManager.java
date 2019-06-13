@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
-import android.support.v4.BuildConfig;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -338,13 +337,7 @@ public class PermissionsManager {
     // If we have a permissions, and we ask again, and the user ignores it, or says no, we loose it.
     // also, even if we have a permission, and ask for it event, the system will ask it
     protected void assertPermissionsNotGranted(@NonNull String[] permissions) {
-        if (BuildConfig.DEBUG) {
-            for (String permission : permissions) {
-                if (wrapper.isPermissionGranted(permission)) {
-                    throw new AssertionError("Yo! You's need to not ask for " + permission + ". It's already been granted!");
-                }
-            }
-        }
+
     }
 
     /* PACKAGE */ void onRequestPermissionsResult(@NonNull String[] permissions,
